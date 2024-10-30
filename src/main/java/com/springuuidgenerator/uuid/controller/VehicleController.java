@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springuuidgenerator.uuid.entity.Vehicle;
+import com.springuuidgenerator.uuid.entity.VehicleBinaryuuid;
+import com.springuuidgenerator.uuid.entity.VehicleVarcharuuid;
 import com.springuuidgenerator.uuid.service.VehicleService;
 
 @RestController
@@ -20,9 +21,15 @@ public class VehicleController {
 		this.vehicleService=service;
 	}
 	
-	@PostMapping("/vehicle")
-	public ResponseEntity<Vehicle> saveVehicle(@RequestBody Vehicle vehicle) {
-		Vehicle vehicle2 = vehicleService.saveVehicle(vehicle);
-		return new ResponseEntity<Vehicle>(vehicle2, HttpStatus.OK);
+	@PostMapping("/binaryvehicle")
+	public ResponseEntity<VehicleBinaryuuid> saveVehicle(@RequestBody VehicleBinaryuuid vehicle) {
+		VehicleBinaryuuid vehicle2 = vehicleService.saveVehicle(vehicle);
+		return new ResponseEntity<VehicleBinaryuuid>(vehicle2, HttpStatus.OK);
+	}
+	
+	@PostMapping("/varcharvehicle")
+	public ResponseEntity<VehicleVarcharuuid> saveVehicle(@RequestBody VehicleVarcharuuid vehicle) {
+		VehicleVarcharuuid vehicle2 = vehicleService.saveVehicle(vehicle);
+		return new ResponseEntity<VehicleVarcharuuid>(vehicle2, HttpStatus.OK);
 	}
 }
