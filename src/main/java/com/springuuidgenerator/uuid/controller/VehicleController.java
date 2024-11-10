@@ -7,8 +7,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springuuidgenerator.uuid.entity.VehicleBinaryuuid;
-import com.springuuidgenerator.uuid.entity.VehicleVarcharuuid;
+import com.springuuidgenerator.uuid.entity.AutoIncrement;
+import com.springuuidgenerator.uuid.entity.Binaryuuid;
+import com.springuuidgenerator.uuid.entity.Varcharuuid;
 import com.springuuidgenerator.uuid.service.VehicleService;
 
 @RestController
@@ -22,14 +23,20 @@ public class VehicleController {
 	}
 	
 	@PostMapping("/binaryvehicle")
-	public ResponseEntity<VehicleBinaryuuid> saveVehicle(@RequestBody VehicleBinaryuuid vehicle) {
-		VehicleBinaryuuid vehicle2 = vehicleService.saveVehicle(vehicle);
-		return new ResponseEntity<VehicleBinaryuuid>(vehicle2, HttpStatus.OK);
+	public ResponseEntity<Binaryuuid> saveVehicle(@RequestBody Binaryuuid vehicle) {
+		Binaryuuid vehicle2 = vehicleService.saveVehicle(vehicle);
+		return new ResponseEntity<Binaryuuid>(vehicle2, HttpStatus.OK);
 	}
 	
 	@PostMapping("/varcharvehicle")
-	public ResponseEntity<VehicleVarcharuuid> saveVehicle(@RequestBody VehicleVarcharuuid vehicle) {
-		VehicleVarcharuuid vehicle2 = vehicleService.saveVehicle(vehicle);
-		return new ResponseEntity<VehicleVarcharuuid>(vehicle2, HttpStatus.OK);
+	public ResponseEntity<Varcharuuid> saveVehicle(@RequestBody Varcharuuid vehicle) {
+		Varcharuuid vehicle2 = vehicleService.saveVehicle(vehicle);
+		return new ResponseEntity<Varcharuuid>(vehicle2, HttpStatus.OK);
+	}
+	
+	@PostMapping("/autoincrement")
+	public ResponseEntity<AutoIncrement> saveVehicle(@RequestBody AutoIncrement vehicle) {
+		AutoIncrement vehicle2 = vehicleService.saveVehicle(vehicle);
+		return new ResponseEntity<AutoIncrement>(vehicle2, HttpStatus.OK);
 	}
 }

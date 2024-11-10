@@ -2,29 +2,39 @@ package com.springuuidgenerator.uuid.service;
 
 import org.springframework.stereotype.Service;
 
-import com.springuuidgenerator.uuid.entity.VehicleBinaryuuid;
-import com.springuuidgenerator.uuid.entity.VehicleVarcharuuid;
-import com.springuuidgenerator.uuid.repository.VehicleBinaryuuidRepository;
-import com.springuuidgenerator.uuid.repository.VehicleVarcharuuidRepository;
+import com.springuuidgenerator.uuid.entity.AutoIncrement;
+import com.springuuidgenerator.uuid.entity.Binaryuuid;
+import com.springuuidgenerator.uuid.entity.Varcharuuid;
+import com.springuuidgenerator.uuid.repository.AutoIncrementedRepository;
+import com.springuuidgenerator.uuid.repository.BinaryuuidRepository;
+import com.springuuidgenerator.uuid.repository.VarcharuuidRepository;
 
 @Service
 public class VehicleService {
 	
-	private VehicleBinaryuuidRepository binaryuuidRepository;
+	private BinaryuuidRepository binaryuuidRepository;
 	
-	private VehicleVarcharuuidRepository varcharuuidRepository;
+	private VarcharuuidRepository varcharuuidRepository;
 	
-	public VehicleService (VehicleBinaryuuidRepository repository,
-							VehicleVarcharuuidRepository vehicleVarcharuuidRepository) {
+	private AutoIncrementedRepository vehicleAutoIncrementedRepository;
+	
+	public VehicleService (BinaryuuidRepository repository,
+							VarcharuuidRepository vehicleVarcharuuidRepository,
+							AutoIncrementedRepository autoIncrementedRepository) {
 		this.binaryuuidRepository=repository;
 		this.varcharuuidRepository=vehicleVarcharuuidRepository;
+		this.vehicleAutoIncrementedRepository=autoIncrementedRepository;
 	}
 	
-	public VehicleBinaryuuid saveVehicle(VehicleBinaryuuid vehicle) {
+	public Binaryuuid saveVehicle(Binaryuuid vehicle) {
 		return binaryuuidRepository.saveAndFlush(vehicle);
 	}
 	
-	public VehicleVarcharuuid saveVehicle(VehicleVarcharuuid vehicle) {
+	public Varcharuuid saveVehicle(Varcharuuid vehicle) {
 		return varcharuuidRepository.saveAndFlush(vehicle);
-	} 
+	}
+	
+	public AutoIncrement saveVehicle(AutoIncrement vehicle) {
+		return vehicleAutoIncrementedRepository.saveAndFlush(vehicle);
+	}
 }
